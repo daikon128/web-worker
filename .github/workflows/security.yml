@@ -2,7 +2,7 @@ name: security
 on: [push]
 jobs:
   audit:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps:
       - name: Cache node modules
         uses: actions/cache@v2
