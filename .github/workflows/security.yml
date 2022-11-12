@@ -15,4 +15,5 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      - name: yarn audit
+      - name: do audit
+        run: yarn audit
