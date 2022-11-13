@@ -6,10 +6,29 @@ describe('show link card', () => {
   })
 
   it('display link card', () => {
-    getLinkCardRoot().find('div').should('have.text', 'link card')
+    linkCardRoot().find('div').should('have.text', 'link card')
   })
 
-  function getLinkCardRoot() {
+  it.skip('show saved link card', () => {
+    saveLinkCard("link card title", "http://example.com", "1", "2")
+    linkCardTitle().should('have.text', 'link card title')
+    linkCardLink().should('have.attr', 'href', 'http://exapmle.com')
+  })
+
+  function linkCardRoot() {
     return cy.get(sut).shadow()
   }
+
+  function linkCardTitle() {
+    return linkCardRoot().find('.link-card-title')
+  }
+
+  function linkCardLink() {
+    return linkCardRoot().find('.link-card-link')
+  }
+
+  function saveLinkCard(title, url, id, userId) {
+
+  }
+
 })
