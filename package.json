@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "e2e-all": "npm-run-all -p \"e2e:*\"",
+    "e2e:link-card": "yarn --cwd ./link-card e2e",
     "audit-all": "npm-run-all -p \"audit:*\"",
     "audit:link-card": "yarn --cwd ./link-card audit",
     "audit:app-shell": "yarn --cwd ./app-shell audit"
