@@ -23,7 +23,7 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: install children node modules
-        run: yarn install-all
+        run: yarn install-children
 
       - name: execute e2e
         run: yarn e2e-all
