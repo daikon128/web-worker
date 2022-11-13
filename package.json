@@ -8,6 +8,8 @@
     "install:app-shell": "yarn --cwd ./app-shell --frozen-lockfile",
     "start-all": "npm-run-all -p \"start:*\"",
     "start:link-card": "yarn --cwd ./link-card start",
+    "stop-all": "npm-run-all -p \"stop:*\"",
+    "stop:link-card": "yarn --cwd ./link-card stop",
     "module-e2e": "npm-run-all -p \"e2e:*\"",
     "e2e:link-card": "yarn --cwd ./link-card e2e",
     "audit-all": "npm-run-all -p \"audit:*\"",
