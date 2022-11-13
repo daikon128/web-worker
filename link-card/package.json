@@ -8,7 +8,7 @@
     "build": "vite build",
     "start": "npm-run-all -s build preview",
     "stop": "kill $(lsof -t -i:8001)",
-    "e2e": "cypress run",
+    "e2e": "cypress run --headless",
     "preview": "vite preview --port 8001",
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
