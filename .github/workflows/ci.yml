@@ -25,5 +25,8 @@ jobs:
       - name: install children node modules
         run: yarn install-children
 
-      - name: execute e2e
-        run: yarn e2e-all
+      - name: start app for module-e2e
+        run: yarn start-all
+
+      - name: execute module e2e
+        run: yarn module-e2e
