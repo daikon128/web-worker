@@ -20,7 +20,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: install node modules
-        run: yarn --frozen-lockfile
+        run: yarn install-all
 
       - name: execute e2e
         run: yarn e2e-all
