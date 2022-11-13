@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "install-children": "npm-run-all -p \"install:*\"",
+    "install-children": "npm-run-all -s install:link-card install:app-shell",
     "install:link-card": "yarn --cwd ./link-card --frozen-lockfile",
     "install:app-shell": "yarn --cwd ./app-shell --frozen-lockfile",
     "start-all": "npm-run-all -p \"start:*\"",
