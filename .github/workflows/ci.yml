@@ -1,7 +1,7 @@
 name: ci
 on: [push]
 jobs:
-  audit:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
