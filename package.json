@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "install-all": "npm-run-all -p \"install:*\"",
-    "install:it": "yarn --frozen-lockfile",
+    "install-children": "npm-run-all -p \"install:*\"",
     "install:link-card": "yarn --cwd ./link-card --frozen-lockfile",
     "install:app-shell": "yarn --cwd ./app-shell --frozen-lockfile",
     "e2e-all": "npm-run-all -p \"e2e:*\"",
