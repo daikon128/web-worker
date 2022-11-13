@@ -6,6 +6,10 @@ describe('show link card', () => {
   })
 
   it('display link card', () => {
-    cy.get(sut).shadow().find('div').should('have.text', 'link card')
+    getLinkCardRoot().find('div').should('have.text', 'link card')
   })
+
+  function getLinkCardRoot() {
+    return cy.get(sut).shadow()
+  }
 })
