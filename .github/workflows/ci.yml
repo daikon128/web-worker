@@ -25,8 +25,13 @@ jobs:
       - name: install children node modules
         run: yarn install-children
 
+      - name: run docker services
+        working-directory: ./link-card-api/environment
+        run: docker-compose up -d
+
       - name: start app for module-e2e
         run: (yarn start-all &)
 
+      # wrong name. link-card-e2e is isolation e2e.
       - name: execute module e2e
         run: yarn module-e2e
