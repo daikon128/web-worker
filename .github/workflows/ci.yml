@@ -14,7 +14,7 @@ jobs:
           cache-name: cache-node-modules
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
@@ -34,6 +34,10 @@ jobs:
       - name: run docker services
         working-directory: ./link-card-api/environment
         run: docker-compose up -d
+
+      - name: change owner of directory created by docker
+        working-directory: ./link-card-api/environment
+        run: sudo chown -R runner:docker .
 
       - name: start app for module-e2e
         run: (yarn start-all &)
