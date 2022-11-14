@@ -35,10 +35,6 @@ jobs:
         working-directory: ./link-card-api/environment
         run: docker-compose up -d
 
-      - name: change owner of directory created by docker
-        working-directory: ./link-card-api/environment
-        run: sudo chown -R runner:docker .
-
       - name: start app for module-e2e
         run: (yarn start-all &)
 
