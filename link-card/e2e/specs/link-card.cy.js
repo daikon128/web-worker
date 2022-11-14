@@ -3,6 +3,8 @@ describe('show link card', () => {
 
   beforeEach(() => {
     cy.visit(Cypress.env('host'))
+    cy.task("db:clean")
+    cy.task("db:createLink", { id: 1, user_id: 2, url: "http://example.com", title: "link card title"})
   })
 
   it('display link card', () => {

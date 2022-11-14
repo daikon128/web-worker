@@ -1,4 +1,5 @@
-import { defineConfig } from 'cypress'
+import {cli, defineConfig} from 'cypress'
+import { client } from "./e2e/plugin/db";
 
 export default defineConfig({
   env: {
@@ -14,7 +15,22 @@ export default defineConfig({
     screenshotsFolder: 'e2e/screenshots',
     specPattern: 'e2e/**/*.cy.{js,jsx,ts,tsx}',
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      on('task', {
+        "db:createLink"(link) {
+          const query = {
+            text: 'INSERT INTO link(id, user_id, url, title) ' +
+              'VALUES($1, $2, $3, $4)',
+            values: [link.id, link.user_id, link.url, link.title ]
+          }
+          return client.query(query)
+        },
+        "db:clean"() {
+          const query = {
+            text: 'DELETE FROM link'
+          }
+          return client.query(query)
+        }
+      })
     },
   }
 })
