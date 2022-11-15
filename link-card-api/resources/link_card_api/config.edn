@@ -2,8 +2,11 @@
  {:duct.core/project-ns link-card-api
 
   :duct.router/ataraxy
-  {:routes {[:get "/"] [:link-card-api.handler/index]}}
+  {:routes {
+            [:get "/"] [:link-card-api.handler/index]
+            [:get "/links"] [:link-card-api.handler.links/list]}}
   [:duct.handler.static/ok :link-card-api.handler/index] {:body {:links "/links"}}
+  [:duct.handler.sql/query :link-card-api.handler.links/list] {:sql ["SELECT * FROM link"]}
 
   }
 
