@@ -1,0 +1,10 @@
+POST localhost:3000/links
+Content-Type: application/json
+
+{
+  "title": "title1",
+  "url": "http://example.com/1"
+}
+
+###
+GET localhost:3000/links

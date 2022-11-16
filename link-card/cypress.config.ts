@@ -18,9 +18,9 @@ export default defineConfig({
       on('task', {
         "db:createLink"(link) {
           const query = {
-            text: 'INSERT INTO link(id, user_id, url, title) ' +
-              'VALUES($1, $2, $3, $4)',
-            values: [link.id, link.user_id, link.url, link.title ]
+            text: 'INSERT INTO link(user_id, url, title) ' +
+              'VALUES($1, $2, $3)',
+            values: [link.user_id, link.url, link.title ]
           }
           return client.query(query)
         },

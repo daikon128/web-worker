@@ -4,9 +4,14 @@
   :duct.router/ataraxy
   {:routes {
             [:get "/"] [:link-card-api.handler/index]
-            [:get "/links"] [:link-card-api.handler.links/list]}}
+            [:get "/links"] [:link-card-api.handler.links/list]
+            [:post "/links" {{:keys [url title]} :body-params}] [:link-card-api.handler.links/create url title]
+            }}
   [:duct.handler.static/ok :link-card-api.handler/index] {:body {:links "/links"}}
   [:duct.handler.sql/query :link-card-api.handler.links/list] {:sql ["SELECT * FROM link"]}
+  [:duct.handler.sql/insert :link-card-api.handler.links/create]
+    {:request {[_ url title] :ataraxy/result}
+     :sql ["INSERT INTO link (user_id, url, title) VALUES(2, ?, ?)" url title]}
 
   }
 
