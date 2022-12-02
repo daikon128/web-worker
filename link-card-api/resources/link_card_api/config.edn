@@ -11,7 +11,7 @@
   [:duct.handler.sql/query :link-card-api.handler.links/list] {:sql ["SELECT * FROM link"]}
   [:duct.handler.sql/insert :link-card-api.handler.links/create]
     {:request {[_ url title] :ataraxy/result}
-     :sql ["INSERT INTO link (user_id, url, title) VALUES(2, ?, ?)" url title]}
+     :sql ["INSERT INTO link (url, title) VALUES(?, ?)" url title]}
 
   }
 
