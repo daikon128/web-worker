@@ -1,6 +1,12 @@
 {:duct.profile/base
  {:duct.core/project-ns link-card-api
 
+  :link-card-api.middleware/wrap-cors
+  {:access-control-allow-origin [#link-card-api/regex "http://localhost:8001"]
+   :access-control-allow-methods [:get :put :post :delete]}
+  :duct.handler/root
+  {:middleware [#ig/ref :link-card-api.middleware/wrap-cors]}
+
   :duct.router/ataraxy
   {:routes {
             [:get "/"] [:link-card-api.handler/index]
@@ -11,7 +17,7 @@
   [:duct.handler.sql/query :link-card-api.handler.links/list] {:sql ["SELECT * FROM link"]}
   [:duct.handler.sql/insert :link-card-api.handler.links/create]
     {:request {[_ url title] :ataraxy/result}
-     :sql ["INSERT INTO link (url, title) VALUES(?, ?)" url title]}
+     :sql ["INSERT INTO link (user_id, url, title) VALUES(?, ?, ?)" 1 url title]}
 
   }
 

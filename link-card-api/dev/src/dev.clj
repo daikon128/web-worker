@@ -9,12 +9,14 @@
             [eftest.runner :as eftest]
             [integrant.core :as ig]
             [integrant.repl :refer [clear halt go init prep reset]]
-            [integrant.repl.state :refer [config system]]))
+            [integrant.repl.state :refer [config system]]
+            [link-card-api.main :refer [custom-readers]]))
 
 (duct/load-hierarchy)
 
 (defn read-config []
-  (duct/read-config (io/resource "link_card_api/config.edn")))
+  (duct/read-config (io/resource "link_card_api/config.edn")
+                    custom-readers))
 
 (defn test []
   (eftest/run-tests (eftest/find-tests "test")))

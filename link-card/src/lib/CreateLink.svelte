@@ -1,23 +1,17 @@
 <svelte:options tag="create-link" />
 <script lang="ts">
   import axios from 'axios';
-  class LinkCard {
-    constructor(title: string, url: string) {
-      this.title = title;
-      this.url = url;
-    }
-  }
-
-  const linkCard = new LinkCard("", "")
+  let title = ""
+  let url = ""
 
   async function create() {
-    axios.post("http://localhost:3000",{title: linkCard.title, url: linkCard.url})
+    axios.post("http://localhost:3000/links",{title: title, url: url})
   }
 
 </script>
 
 <div>
-    <input class="link-card-title" value={linkCard.title} />
-    <input class="link-card-url" value={linkCard.url} />
+    <input class="link-card-title" bind:value={title} />
+    <input class="link-card-url" bind:value={url} />
     <button on:click={create}>create</button>
 </div>
