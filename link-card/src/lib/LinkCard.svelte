@@ -1,8 +1,9 @@
 <svelte:options tag="link-card" />
 <script lang="ts">
-  let link;
+  export let url;
+  export let title;
 </script>
 
 <div>
-  link card
+  <a href={url}>{title}</a>
 </div>
